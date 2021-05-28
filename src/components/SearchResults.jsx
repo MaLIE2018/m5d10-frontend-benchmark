@@ -21,15 +21,13 @@ const SearchResults = (props) => {
         : props.match.params.query;
     const series = props.randomSearch !== undefined ? "&type=series" : "";
     try {
-      let response = await fetch(
-        `http://www.omdbapi.com/?s=${query}&apikey=5660ed2b${series}`,
-        {
-          method: "GET",
-          header: {
-            ContentType: "application/json",
-          },
-        }
-      );
+      const api = process.env.REACT_APP_BE_URL;
+      let response = await fetch(`${api}/movies/search/${query}${series}`, {
+        method: "GET",
+        header: {
+          ContentType: "application/json",
+        },
+      });
       if (response.ok) {
         let data = await response.json();
         setMovies([data]);
