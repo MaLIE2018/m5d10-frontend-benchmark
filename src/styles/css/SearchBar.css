@@ -1,0 +1,56 @@
+.input-hidden {
+  width: 42px;
+  transition: all 0.3s ease-in;
+}
+
+.input-expanded {
+  width: 235px;
+  opacity: 1;
+  transition: 0.3s;
+}
+/* dropdown */
+
+a.dropdown-item:hover {
+  background-color: black;
+  text-decoration: underline;
+}
+
+#searchContainer {
+  position: absolute;
+  right: 180px;
+  background-color: black;
+}
+
+.dropdown-menu .customDropDown {
+  background-color: black;
+  opacity: 0.9;
+  color: white;
+}
+
+#SearchDropDown .dropdown-toggle::after:hover {
+  content: "";
+  color: red !important;
+}
+
+#dropDown::hover {
+  background-color: black;
+  color: black;
+}
+
+#smalltriangle {
+  position: absolute;
+  top: 0px;
+  left: 162px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent #e5e5e5 transparent;
+}
+
+#searchField {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+/* end dropdown */
