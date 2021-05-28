@@ -10,8 +10,6 @@ import {Route} from "react-router-dom"
 import SearchResults from './components/SearchResults';
 import Registration from "./components/Registration";
 import WelcomePage from "./components/WelcomePage"
-import ebconfig from './ebconfig';
-import { EasybaseProvider } from "easybase-react"
 class App extends React.Component {
   state = {
     queryArr: ["Harry Potter", "Lord of the Rings", "Terminator"],
@@ -76,7 +74,7 @@ class App extends React.Component {
 render() {
     return (
       <>
-      <EasybaseProvider ebconfig={ebconfig}>
+     
         <Container fluid>
           <NavbarNetflix
             onSearchTextChange={this.handleSearchTextChange}
@@ -118,7 +116,6 @@ render() {
         </Container>
         
         <NetflixFooter />
-        </EasybaseProvider>
       </>
     );
   }
