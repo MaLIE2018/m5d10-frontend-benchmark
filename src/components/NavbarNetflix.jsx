@@ -5,7 +5,7 @@ import avatar from "../assets/img/avatar.png";
 import { AlarmOutline } from "react-ionicons";
 // import { render } from "@testing-library/react";
 import React from "react";
-import { Link, NavLink, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import {
   Navbar,
   Nav,
@@ -82,6 +82,9 @@ class NavbarNetflix extends React.Component {
                 <Nav.Link as={Link} to='/MyList'>
                   My List
                 </Nav.Link>
+                <Nav.Link as={Link} to='/new'>
+                  Create Movie
+                </Nav.Link>
               </Nav>
               <Nav className='mr-auto d-flex d-sm-flex d-md-flex d-lg-none'>
                 <NavDropdown
@@ -116,6 +119,12 @@ class NavbarNetflix extends React.Component {
                     to='/TVShows'
                     as={Link}>
                     My List
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className='text-white font-weight-bold'
+                    to='/new'
+                    as={Link}>
+                    Create Movie
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>

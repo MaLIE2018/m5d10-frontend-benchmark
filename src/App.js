@@ -10,6 +10,7 @@ import {Route} from "react-router-dom"
 import SearchResults from './components/SearchResults';
 import Registration from "./components/Registration";
 import WelcomePage from "./components/WelcomePage"
+import NewMovie from "./views/NewMovie";
 
 
 class App extends React.Component {
@@ -91,6 +92,7 @@ render() {
             </Row>
           ) :
           <> 
+          <Route path="/new"  component={NewMovie}/>
             <Route render={(routerProps) =>  <MoviePage
               data={this.state.data}
               searchText={this.state.searchText}
