@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Comments from "./Comments";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Col, Row, Spinner, Button } from "react-bootstrap";
 import { AddOutline } from "react-ionicons";
 
 class Details extends Component {
@@ -24,6 +24,25 @@ class Details extends Component {
       console.log(error);
     }
   }
+
+  getPDF = async () => {
+    const api = process.env.REACT_APP_BE_URL;
+    fetch(api + `/movies/${this.props.match.params.id}/pdf`, {
+      headers: {
+        "Content-Type": "application/json",
+        Origin: process.env.REACT_APP_FRONTEND_API_URL,
+      },
+    })
+      .then((response) => response.blob())
+      .then((blob) => URL.createObjectURL(blob))
+      .then((url) => {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "blog.pdf";
+        a.click();
+      })
+      .catch((err) => console.error(err));
+  };
 
   render() {
     const movie = this.state.selectedMovie;
@@ -63,6 +82,7 @@ class Details extends Component {
               </div>
             </Col>
           </Row>
+
           <Row>
             <Col md={4} className='pl-0 pt-0'>
               <img src={movie.Poster} alt='' className='img-fluid' />
@@ -106,6 +126,9 @@ class Details extends Component {
               </div>
             </Col>
           </Row>
+          <a className='btn btn-primary' onClick={this.getPDF}>
+            Create PDF
+          </a>
         </Col>
         <Col md={4} className='mr-auto'>
           <Comments selectedMovie={movie} />
