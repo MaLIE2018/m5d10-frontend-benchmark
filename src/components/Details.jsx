@@ -10,9 +10,8 @@ class Details extends Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch(
-        `http://www.omdbapi.com/?i=${this.props.match.params.id}&apikey=5660ed2b`
-      );
+      const api = process.env.REACT_APP_BE_URL;
+      const res = await fetch(`${api}/movies/${this.props.match.params.id}`);
       if (res.ok) {
         const data = await res.json();
         this.setState((state) => {

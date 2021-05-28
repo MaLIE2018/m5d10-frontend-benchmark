@@ -57,6 +57,8 @@ class Comments extends Component {
             ) : (
               <CommentList
                 comments={this.state.comments}
+                newComment={this.state.newComment}
+                onNewCommentSubmit={this.handleNewCommentSubmit}
                 style={{ zIndex: 1 }}
               />
             )}

@@ -36,10 +36,11 @@ class App extends React.Component {
   };
 
   fetchData = async () => {
+    const api = process.env.REACT_APP_BE_URL;
     this.setState({data:await Promise.all(
       this.state.queryArr.map(async(query) => {
           const res = await fetch(
-            `http://www.omdbapi.com/?s=${query}&apikey=5660ed2b`,
+            `${api}/movies/search/${query}`,
             {
               method: "GET",
               header: {

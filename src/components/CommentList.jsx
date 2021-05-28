@@ -5,10 +5,34 @@ import { Component } from "react";
 class CommentList extends Component {
   state = {
     filterText: "",
+    hover: false,
   };
 
   handleFilterTextChange = (FilterText) => {
     this.setState({ filterText: FilterText, filteredComments: [] });
+  };
+
+  handleNewCommentSubmit = () => {
+    this.props.onNewCommentSubmit(true);
+  };
+
+  manipulateData = async (event, id) => {
+    event.preventDefault();
+    try {
+      const api = process.env.REACT_APP_BE_URL;
+      let response = await fetch(`${api}/comments/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.state.newComment),
+      });
+      if (response.ok) {
+        this.handleNewCommentSubmit();
+      }
+    } catch (error) {
+      alert("Something went wrong");
+    }
   };
 
   render() {
@@ -47,7 +71,11 @@ class CommentList extends Component {
                 <ListGroup.Item key={comment._id} className='bg-dark'>
                   Author: {comment.author} Comment: {comment.comment} Rating:{" "}
                   {comment.rate}
-                  <Button className='btn btn-danger'>Del</Button>
+                  <Button
+                    className='btn btn-danger'
+                    onClick={(e) => this.manipulateData(e, comment._id)}>
+                    Del
+                  </Button>
                 </ListGroup.Item>
               );
             })}
