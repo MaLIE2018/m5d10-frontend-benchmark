@@ -10,6 +10,8 @@ import {Route} from "react-router-dom"
 import SearchResults from './components/SearchResults';
 import Registration from "./components/Registration";
 import WelcomePage from "./components/WelcomePage"
+
+
 class App extends React.Component {
   state = {
     queryArr: ["Harry Potter", "Lord of the Rings", "Terminator"],
@@ -74,7 +76,6 @@ class App extends React.Component {
 render() {
     return (
       <>
-     
         <Container fluid>
           <NavbarNetflix
             onSearchTextChange={this.handleSearchTextChange}
